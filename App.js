@@ -7,6 +7,7 @@ import { BottomNavigation, Text } from 'react-native-paper';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 import * as Font from 'expo-font';
 import { Statistic } from './src/components/Statistic';
+import { SpreadMap } from './src/components/SpreadMap';
 
 const AlbumsRoute = () => <Text>Albums</Text>;
 
@@ -37,7 +38,7 @@ class Layout extends React.Component {
     index: 0,
     routes: [
       { key: 'statistic', title: 'Statistic', icon: 'signal' },
-      { key: 'albums', title: 'Albums', icon: 'album' },
+      { key: 'map', title: 'Map', icon: 'map' },
     ],
     fontLoaded: false,
   };
@@ -46,8 +47,7 @@ class Layout extends React.Component {
 
   _renderScene = BottomNavigation.SceneMap({
     statistic: Statistic,
-    albums: AlbumsRoute,
-    recents: RecentsRoute,
+    map: SpreadMap,
   });
 
   componentDidMount() {
