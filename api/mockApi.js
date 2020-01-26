@@ -40,3 +40,53 @@ export const loadInfectionPerCountry = async () => {
         }, 0)
     )
 }
+
+export const loadNews = async () => {
+    return new Promise((resolve) => 
+        setTimeout(() => {
+            resolve([
+                {
+                    title: "Second death in china",
+                    date: "10:00 26.01.2020",
+                    description: "asdfasdfzxcv asdf asdf",
+                    imageUrl: "https://picsum.photos/700"
+                }, {
+                    title: "Second death in china",
+                    date: "10:00 26.01.2020",
+                    description: "asdfasdfzxcv asdf asdf",
+                    imageUrl: "https://picsum.photos/700"
+                }, {
+                    title: "Second death in china",
+                    date: "10:00 26.01.2020",
+                    description: "asdfasdfzxcv asdf asdf",
+                    imageUrl: "https://picsum.photos/700"
+                }, {
+                    title: "Second death in china",
+                    date: "10:00 26.01.2020",
+                    description: "asdfasdfzxcv asdf asdf",
+                    imageUrl: "https://picsum.photos/700"
+                }, {
+                    title: "Second death in china",
+                    date: "10:00 26.01.2020",
+                    description: "asdfasdfzxcv asdf asdf",
+                    imageUrl: "https://picsum.photos/700"
+                }, {
+                    title: "Second death in china",
+                    date: "10:00 26.01.2020",
+                    description: "asdfasdfzxcv asdf asdf",
+                    imageUrl: "https://picsum.photos/700"
+                }, {
+                    title: "Second death in china",
+                    date: "10:00 26.01.2020",
+                    description: "asdfasdfzxcv asdf asdf",
+                    imageUrl: "https://picsum.photos/700"
+                }, {
+                    title: "Second death in china",
+                    date: "10:00 26.01.2020",
+                    description: "asdfasdfzxcv asdf asdasdfasdfasdfasdfasdfasf",
+                    imageUrl: "https://picsum.photos/700"
+                }
+            ])
+        }, 1000)
+    )
+}
