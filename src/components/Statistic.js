@@ -1,7 +1,7 @@
 //@ts-check
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { loadStatistic } from './api/mockApi'
+import { loadStatistic } from '../../api/mockApi'
 import { View, Text } from 'react-native'
 import styled from 'styled-components'
 import { Divider } from 'react-native-paper'

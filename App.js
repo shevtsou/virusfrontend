@@ -6,7 +6,7 @@ import { Provider as PaperProvider, DefaultTheme, Appbar } from 'react-native-pa
 import { BottomNavigation, Text } from 'react-native-paper';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 import * as Font from 'expo-font';
-import { Statistic } from './Statistic';
+import { Statistic } from './src/components/Statistic';
 
 const AlbumsRoute = () => <Text>Albums</Text>;
 
