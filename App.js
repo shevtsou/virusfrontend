@@ -1,6 +1,6 @@
 //@ts-check
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, StatusBar } from 'react-native';
 import { AppRegistry } from 'react-native';
 import { Provider as PaperProvider, DefaultTheme, Appbar } from 'react-native-paper';
 import { BottomNavigation, Text } from 'react-native-paper';
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: 0,
     right: 0,
-    top: 24,
+    top: 0,
   },
 });
 
@@ -60,6 +60,7 @@ class Layout extends React.Component {
   render() {
     return (
       <>
+        <StatusBar hidden={true} />
         <Appbar style={styles.bottom}>
           {this.state.fontLoaded ? <Text style={{fontFamily: 'montserrat', fontSize: 20, marginLeft: 10}}>China Virus</Text> : <Text>Loading</Text>}
           
