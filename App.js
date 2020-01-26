@@ -6,8 +6,7 @@ import { Provider as PaperProvider, DefaultTheme, Appbar } from 'react-native-pa
 import { BottomNavigation, Text } from 'react-native-paper';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 import * as Font from 'expo-font';
-
-const MusicRoute = () => <Text>Music</Text>;
+import { Statistic } from './Statistic';
 
 const AlbumsRoute = () => <Text>Albums</Text>;
 
@@ -46,23 +45,28 @@ class Layout extends React.Component {
   _handleIndexChange = index => this.setState({ index });
 
   _renderScene = BottomNavigation.SceneMap({
-    statistic: MusicRoute,
+    statistic: Statistic,
     albums: AlbumsRoute,
     recents: RecentsRoute,
   });
 
   componentDidMount() {
     Font.loadAsync({
-      "montserrat": require('./assets/fonts/montserrat.ttf'),
+      "montserrat-bold": require('./assets/fonts/Montserrat-Bold.ttf'),
+      "montserrat-extra-bold": require('./assets/fonts/Montserrat-ExtraBold.ttf'),
+      "montserrat-semi-bold": require('./assets/fonts/Montserrat-SemiBold.ttf'),
     }).then(()=> this.setState({fontLoaded: true}))
   }
 
   render() {
+    if (!this.state.fontLoaded) {
+      return <Text>'Loading...'</Text>
+    }
     return (
       <>
         <StatusBar hidden={true} />
         <Appbar style={styles.bottom}>
-          {this.state.fontLoaded ? <Text style={{fontFamily: 'montserrat', fontSize: 20, marginLeft: 10}}>China Virus</Text> : <Text>Loading</Text>}
+          {this.state.fontLoaded ? <Text style={{fontFamily: 'montserrat-bold', fontSize: 20, marginLeft: 10}}>China Virus</Text> : <Text>Loading</Text>}
           
         </Appbar>
         <BottomNavigation
