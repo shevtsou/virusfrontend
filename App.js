@@ -2,13 +2,24 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { AppRegistry } from 'react-native';
-import { Provider as PaperProvider } from 'react-native-paper';
+import { Provider as PaperProvider, DefaultTheme } from 'react-native-paper';
 import { BottomNavigation, Text } from 'react-native-paper';
 const MusicRoute = () => <Text>Music</Text>;
 
 const AlbumsRoute = () => <Text>Albums</Text>;
 
 const RecentsRoute = () => <Text>Recents</Text>;
+
+
+const theme = {
+  ...DefaultTheme,
+  roundness: 2,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#FFFFFB',
+    accent: '#f1c40f',
+  },
+};
 
 class MyComponent extends React.Component {
   state = {
@@ -41,7 +52,7 @@ class MyComponent extends React.Component {
 
 export default function App() {
   return (
-    <PaperProvider>
+    <PaperProvider theme={theme}>
       <MyComponent />
     </PaperProvider>
   );
