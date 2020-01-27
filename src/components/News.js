@@ -1,7 +1,7 @@
 //@ts-check
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { loadStatistic, loadNews } from '../../api/mockApi'
+import { loadNews } from '../../api/api'
 import { View, Text } from 'react-native'
 import styled from 'styled-components'
 import { Divider, Avatar, Button, Card, Title, Paragraph } from 'react-native-paper'
@@ -59,18 +59,15 @@ export class News extends React.Component {
                 {this.state.news.map(news => (
                 <Card style={{width: "95%", height: 150, marginBottom: 10}}>
                     <Card.Content>
-                        <View style={{display: "flex", flexDirection: "row", justifyContent: "space-between"}}>
+                        <View style={{display: "flex", flexDirection: "row", justifyContent: "space-between", alignItems: 'center'}}>
                             <View style={{maxWidth: "70%"}}>
-                                <Title>{news.title}</Title>
+                                <Title style={{ fontSize: 15, lineHeight: 20}}>{news.title}</Title>
                                 <Text style={{marginTop: -5, marginBottom: 5, color: 'gray', opacity: 0.5}}>{news.date}</Text>
-                                <Paragraph style={{marginTop: -2}}>
-                                    {this.clipDescription(news.description)}
-                                </Paragraph>
                             </View>
-                            <View>
+                            <View style={{height: "100%", display: "flex", justifyContent: "flex-start", alignItems: "flex-start"}}>
                                 <Image
-                                    width={80}
-                                    style={{marginTop: 20, marginLeft: 10}}
+                                    width={90}
+                                    style={{marginTop: 20, marginLeft: 5}}
                                     source={{ uri: news.imageUrl }}
                                     />
                             </View>

@@ -5,7 +5,8 @@ import styled from 'styled-components'
 import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
 import { Surface, Text } from 'react-native-paper';
 import Image from 'react-native-scalable-image';
-import { loadStatistic, loadInfectionPerCountry } from '../../api/mockApi';
+import { loadStatistic } from '../../api/mockApi';
+import { loadMap, loadInfectionPerCountry } from '../../api/api'
 import { ScrollView } from 'react-native-gesture-handler';
 
 const screenWidth = Math.round(Dimensions.get('window').width);
@@ -35,9 +36,11 @@ const styles = StyleSheet.create({
 export class SpreadMap extends React.Component {
 
   state = {
-    loaded: false,
+    dataLoaded: false,
+    mapLoaded: false,
     unmounted: false,
-    countries: []
+    countries: [],
+    encodedMap: undefined
   }
 
   componentDidMount() {
@@ -45,7 +48,15 @@ export class SpreadMap extends React.Component {
       if (!this.state.unmounted) {
         this.setState({
           countries: data,
-          loaded: true
+          dataLoaded: true
+        })
+      }
+    })
+    loadMap().then(data => {
+      if (!this.state.unmounted) {
+        this.setState({
+          encodedMap: data,
+          mapLoaded: true
         })
       }
     })
@@ -58,8 +69,8 @@ export class SpreadMap extends React.Component {
   }
 
   render () {
-    const { countries, loaded} = this.state
-    if (!loaded) {
+    const { countries, encodedMap, dataLoaded, mapLoaded} = this.state
+    if (!dataLoaded || !mapLoaded) {
       return (
         <Text>Loading...</Text>
       )
@@ -70,14 +81,14 @@ export class SpreadMap extends React.Component {
           <ImageView>
             <Image
               width={screenWidth - 45}
-              source={require('../../assets/evil.png')}
+              source={{uri: encodedMap}}
             />
           </ImageView>
             {countries.map((country => (
               <Card style={{height: 100, width: "90%", marginBottom: 10}}>
                 <Card.Content>
-                  <Paragraph>{country.country}</Paragraph>
-                  <Title style={{marginTop: 5}}>{country.count} infected</Title>
+                  <Paragraph>{country.name}</Paragraph>
+                  <Title style={{marginTop: 5}}>{country.infected} infected</Title>
                 </Card.Content>
               </Card>
             )))}
